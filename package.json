@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "vue": "^3.2.47",
+    "vue-tiny-slider": "^0.1.39"
+  }
+}

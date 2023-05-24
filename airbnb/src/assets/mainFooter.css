@@ -1,0 +1,111 @@
+@media (max-width:730px) {
+  .mainFooterWrap {
+    display: none!important;
+  }
+}
+.mainFooterWrap {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 8;
+}
+.mfWrap {
+  background-color: #fff;
+  border-top: 1px solid #ddd;
+  display: flex;
+  flex-flow:column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.mfTopWrap {
+  padding: 13px 40px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width:93%;
+}
+.mfTopDivSpan {
+  font-size:14px;
+  line-height: 18px;
+  color:#000;
+}
+.mfTopDot {
+  display: inline-block;
+  text-align: center;
+  width: 19px;
+  font-size: 14px;
+  line-height: 18px;
+}
+.mfOl{
+  display: inline;
+}
+.mfLi {
+  display: inline-block;
+}
+.mfLiA {
+  font-size: 14px;
+  font-weight: 400;
+  color:#222;
+}
+.mfLiA:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.mfTopFlex {
+  flex: 1 0 22px;
+}
+.mftMoney {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.topFontBold {
+  font-size: 14px;
+  font-weight: bold;
+}
+.mfTopMarginRight {
+  margin-right: 8px;
+}
+.mfTopLang {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.mfTopFlex {
+  display: flex;
+  align-items: end;
+  gap:16px;
+}
+.mfTopLast{
+  display: flex;
+  align-items: end;
+  gap:16px;
+}
+.topMargin {
+  margin-left: 8px;
+}
+.mfTopSupport {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.footerMiddle {
+  border-top: 1px solid #ddd;
+  padding-top: 8px;
+  width:93%;
+}
+.mfBottom {
+  padding-bottom:8px;
+  display: flex;
+  flex-direction: column;
+  font-size:10px;
+  line-height: 12px;
+  letter-spacing: 0.02em;
+  color: #717171;
+  width:93%;
+  text-align: left;
+  word-break: keep-all;
+}

@@ -1,0 +1,229 @@
+.itemsAllListWrap {
+  margin-inline: auto;
+  padding-inline-start: 40px;
+  padding-inline-end: 40px;
+}
+.itemGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 40px 24px;
+}
+
+@media (max-width: 1126px) {
+  .itemGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media (max-width: 950px) {
+  .itemGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 730px) {
+  .itemGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 500px) {
+  .itemGrid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+@media (min-width: 744px) {
+  .itemGrid {
+    margin-block-start: 16px;
+    margin-block-end: 120px;
+  }
+}
+.mainPageItem {
+  display: grid;
+  grid-template-columns: 100%;
+}
+/*아이템*/
+.itemFlexWrap {
+  display: flex;
+  flex-direction: column-reverse;
+}
+.itemImg {
+  box-sizing: border-box;
+  margin-bottom: 12px;
+  overflow: hidden;
+  border-radius: 8px;
+  width: 100%;
+  position:relative;
+}
+.imgThumbnail {
+  display: block;
+  width: 100%;
+  height: auto;
+  background-size: cover;
+  aspect-ratio: 20/19;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  object-fit: cover;
+}
+.itemIntro {
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.intro01 {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.intro01 p {
+  font-size: 15px;
+  font-weight: bold;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.intro01 div span {
+  font-size: 15px;
+}
+.introText {
+  font-size: 15px;
+  color: #717171;
+}
+.textBold {
+  font-weight: bold;
+  margin-top: 5px;
+  color:#000;
+}
+.itemBtnWrap {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+}
+.btnWrap1 {
+  width:100%;
+  height: 33.33%;
+}
+.heartBtnWrap {
+  pointer-events: auto;
+  z-index: 5;
+  position: absolute;
+  right: 0;
+  padding: 10px;
+}
+.heartBtn {
+  cursor: pointer;
+  border-width: 1px;
+  border-style: solid;
+  background-color: transparent;
+  border-radius: 50%;
+  border: none;
+  transition: transform 0.25s ease;
+  margin: -2px 0 0;
+  padding: 2px 0 0 0;
+}
+.btnWrap2 {
+  width: 100%;
+  height: 33.33%;
+  position: relative;
+}
+.itemFlexWrap:hover #itemPrev {
+  opacity: 1;
+  transition: all 0.3s;
+}
+.itemFlexWrap:hover #itemNext {
+  opacity: 1;
+  transition: all 0.3s;
+}
+.imgBtnFlex {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: #fff;
+  z-index: 20;
+  box-shadow: 0 3px 5px rgba(0,0,0,0.14);
+}
+.imgBtnFlex:hover {
+  transform: scale(1.04);
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.14);
+}
+.btnWrap3 {
+  width:100%;
+  height: 33.33%;
+  position: relative;
+  display: flex;
+  flex-flow: nowrap;
+  justify-content: center;
+  align-items: flex-end;
+  background: linear-gradient(to top, rgba(0,0,0,0.2), transparent);
+  z-index: 1;
+}
+#itemNext{
+  position: absolute;
+  top:0;
+  right: 0;
+  display:flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: auto;
+  height: 100%;
+  z-index: 20;
+  padding: 0 6px;
+  opacity: 0;
+}
+#itemPrev{
+  position:absolute;
+  top: 0;
+  left: 0;
+  display:flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: auto;
+  z-index: 20;
+  padding: 0 6px;
+  opacity: 0;
+}
+.itemWrap {
+  height: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+}
+#itemPagination {
+  position: absolute;
+  z-index: 2;
+  margin-bottom: 8px;
+}
+.swiper-pagination-clickable .swiper-pagination-bullet {
+  margin:2.2px;
+  width: 6px;
+  height: 6px;
+}
+.swiper-pagination-bullet {
+  display: inline-block;
+  border-radius: 100%;
+  background: #fff;
+  opacity: .6;
+}
+.swiper-pagination-bullet-active {
+  background-color: #fff;
+  opacity: 1;
+}
+/*아이템끝*/

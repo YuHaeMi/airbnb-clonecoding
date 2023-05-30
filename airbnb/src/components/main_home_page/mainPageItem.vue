@@ -44,7 +44,7 @@
           </div>
           </div>
           <div class="btnWrap2">
-            <span :class="`item-img-prev${index}`" id="itemPrev">
+            <span :class="`item-img-prev${index}`" id="itemPrev" ref="prev" style="display: none">
               <div class="btnWrap itemWrap">
                 <div class="imgBtnFlex">
                   <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style="display: block; fill: none; height: 12px; width: 12px; stroke: currentcolor; stroke-width: 5.33333; overflow: visible;">
@@ -56,7 +56,7 @@
                 </div>
               </div>
             </span>
-            <span :class="`item-img-next${index}`" id="itemNext">
+            <span :class="`item-img-next${index}`" id="itemNext" ref="next">
               <div class="btnWrap itemWrap">
                 <div class="imgBtnFlex">
                   <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style="display: block; fill: none; height: 12px; width: 12px; stroke: currentcolor; stroke-width: 5.33333; overflow: visible;">
@@ -88,7 +88,6 @@ export default {
   data () {
     return {
       itemList
-      // swiperOption:
     }
   },
   methods: {
@@ -112,6 +111,28 @@ export default {
           el: '.swiper-pagination' + aa,
           type: 'bullets',
           clickable: true
+        },
+        loop: true,
+        on: {
+          slideChange: function () {
+            console.log('------------------------')
+            console.log(this)
+            console.log(this.realIndex + '임')
+            switch (this.realIndex) {
+              case 3:
+                this.navigation.nextEl.style.display = 'none'
+                this.navigation.prevEl.style.display = 'block'
+                break
+              case 0:
+                this.navigation.nextEl.style.display = 'block'
+                this.navigation.prevEl.style.display = 'none'
+                break
+              default:
+                this.navigation.nextEl.style.display = 'block'
+                this.navigation.prevEl.style.display = 'block'
+                break
+            }
+          }
         }
       }
       // test.navigation.nextEl = '.item-img-next' + aa
@@ -121,19 +142,62 @@ export default {
     },
     dataChange () {
       for (let i = 0; i < this.itemList.length; i++) {
+        // console.log(this.$refs.tete)
         // console.log('i :' + i)
         // console.log(this.itemList)
         // console.log(this.itemList[i])
         // console.log(this.itemList[i].introImage)
+        // if (this.itemList[i].introImage[0]) {
+        // }
         for (let j = 0; j < this.itemList[i].introImage.length; j++) {
           // console.log('j :' + j)
           // console.log('img --------' + this.itemList[i].introImage[j])
           // console.log('this.itemList' + this.itemList[i].introImage[j])
           this.itemList[i].introImage[j] = require('@/' + this.itemList[i].introImage[j] + '.jpg')
         }
+        // console.log(this.itemList[i].introImage[0], this.itemList[i].introImage.length -1)
       }
       return this.itemList
+    },
+    doStuff (ttt) {
+      console.log('아이템리스트' + this.itemList)
+      console.log('실행댐')
+      console.log(ttt)
+      let outNext = 0
+      for (let i = 0; i < this.itemList.length; i++) {
+        outNext = i
+        console.log(outNext)
+        for (let j = 0; j < this.itemList[i].introImage.length; j++) {
+          // console.log('j : ' + j)
+          if (j === 0) {
+            // console.log(this.$refs.next[i])
+            // console.log(this.itemList[i].introImage.length - 1)
+            console.log('디스는' + this.itemList[i].introImage[this.itemList[i].introImage.length - 1])
+            this.callEvent()
+          }
+        }
+      }
+    },
+    callEvent () {
+      console.log('실행댐 callEvenrt')
     }
+  },
+  mounted () {
+    let nextBtn = this.$refs.next
+    // let outNext = 0
+    for (let i = 0; i < nextBtn.length; i++) {
+      // outNext = i
+      // nextBtn[outNext].addEventListener('click', function (i) {
+      //   console.log(i)
+      // })
+    }
+    // nextBtn.forEach((val, idx, arr) => {
+    //   val.addEventListener('click', function () {
+    //     console.log('---------------')
+    //     console.log(val)
+    //     console.log(idx)
+    //   })
+    // })
   },
   components: {
     swiper,

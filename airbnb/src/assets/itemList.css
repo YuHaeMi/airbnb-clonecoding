@@ -198,6 +198,9 @@
   padding: 0 6px;
   opacity: 0;
 }
+.imgThumbnail:nth-child(1):hover #itemPrev {
+  display: none!important;
+}
 .itemWrap {
   height: 100%;
   display: flex;

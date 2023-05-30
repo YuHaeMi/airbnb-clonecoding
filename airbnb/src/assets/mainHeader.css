@@ -1,15 +1,24 @@
 /*헤더*/
 
 @media (min-width:1126px) {}
-@media (max-width:730px) {
+@media (max-width:740px) {
   .mpHeaderWrap {
     display: none!important;
   }
+  .swiper-btn-prev {
+    display: none!important;
+  }
+  .swiper-btn-next {
+    display: none!important;
+  }
+  .filterWrapBox {
+    display: none!important;
+  }
+  .categoryWrap {
+    width: 100%!important;
+  }
 }
 @media (min-width:950px) {
-  .mpInfoLogo {
-    flex: 1 0 140px;
-  }
 }
   .mpHeaderWrap {
     display: block;
@@ -100,9 +109,6 @@
   max-width: 1760px;
   padding: 0 40px;
 }
-.mpInfoLogo {
-  flex: 0 0 auto;
-}
 .mpInfoLogo a {
   outline: none;
   align-items: center;
@@ -181,6 +187,8 @@
 }
 .mpInfoSub {
   flex: 1 0 140px;
+}
+.mpInfoFlex {
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
@@ -259,7 +267,6 @@
   z-index: 1;
   margin-left: 12px;
 }
-@media (min-width: 950px) {
-
+@media (max-width: 1126px) {
 }
 /*인포끝*/

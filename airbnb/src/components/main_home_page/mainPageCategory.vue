@@ -1,11 +1,11 @@
 <template>
-  <div v-bind:style="isFixed" class="categoryPosition">
+  <div class="categoryPosition">
     <div ref="scrollTest" class="categoryAllWrap">
       <div class="categoryWrap">
         <div class="categoryIconWrap">
           <swiper ref="filterSwiper" :options="swiperOption" role="tablist">
             <swiper-slide role="tab" v-for="(item, index) in icon()" :key="index">
-              <label>
+              <label @click="activeEvent(index)">
                 <div>
                   <span class="labelSpan">
                     <div>
@@ -20,7 +20,7 @@
               </label>
             </swiper-slide>
           </swiper>
-          <span class="swiper-btn-prev">
+          <span class="swiper-btn-prev" style="display: none;">
             <div class="btnWrap">
               <div class="btn-flex">
                 <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style="display: block; fill: none; height: 12px; width: 12px; stroke: currentcolor; stroke-width: 5.33333; overflow: visible;">
@@ -49,22 +49,43 @@
         </div>
       </div>
       <div class="filterWrap">
-        <div class="filterWrapBox">
+        <div class="filterWrapBox" @click="modalOpen">
           <span class="filterFlex">
             <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" style="display:block;height:14px;width:14px;fill:currentColor" aria-hidden="true" role="presentation" focusable="false">
-            <path d="M5 8c1.306 0 2.418.835 2.83 2H14v2H7.829A3.001 3.001 0 1 1 5 8zm0 2a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm6-8a3 3 0 1 1-2.829 4H2V4h6.17A3.001 3.001 0 0 1 11 2zm0 2a1 1 0 1 0 0 2 1 1 0 0 0 0-2z">
-            </path>
-          </svg>
-          <span class="filterSpan">
-            필터
+              <path d="M5 8c1.306 0 2.418.835 2.83 2H14v2H7.829A3.001 3.001 0 1 1 5 8zm0 2a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm6-8a3 3 0 1 1-2.829 4H2V4h6.17A3.001 3.001 0 0 1 11 2zm0 2a1 1 0 1 0 0 2 1 1 0 0 0 0-2z">
+              </path>
+            </svg>
+            <span class="filterSpan">
+              필터
+            </span>
           </span>
-        </span>
+        </div>
+        <div class="modal-wrap" v-show="modalCheck">
+          <div class="modal-container-wrap">
+            <transition name="slideFade">
+              <div class="modal-container">
+                <div class="modal-btn">
+                  <span class="closeBtn" @click="modalOpen">
+                    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style="position:absolute;transform:translate(-50%, -50%);display: block; fill: none; height: 16px; width: 16px; stroke: currentcolor; stroke-width: 3; overflow: visible;">
+                      <path d="m6 6 20 20">
+                      </path>
+                      <path d="m26 6-20 20">
+                      </path>
+                    </svg>
+                  </span>
+                </div>
+                <categoryFilterModal></categoryFilterModal>
+              </div>
+            </transition>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </template>
 <script>
+import categoryFilterModal from '@/components/main_home_page/categoryFilterModal.vue'
+import mainPageItem from '@/components/main_home_page/mainPageItem.vue'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
 import 'swiper/css/swiper.min.css'
 
@@ -72,6 +93,7 @@ export default {
   name: 'category',
   data () {
     return {
+      modalCheck: false,
       categoryName: [
         '방',
         '한옥',
@@ -140,7 +162,7 @@ export default {
         slidesPerView: 'auto',
         slidesPerGroup: 10,
         spaceBetween: 40,
-        slidesOffsetBefore: 70,
+        slidesOffsetBefore: 30,
         slidesOffsetAfter: 70,
         freeMode: false,
         resistance: false, // 슬라이드 터치 저항 여부
@@ -153,24 +175,48 @@ export default {
         breakpoints: {
           320: {
             slidesPerGroup: 1,
-            spaceBetween: 10
+            spaceBetween: 10,
+            slidesOffsetBefore: 30
           },
           640: {
             slidesPerGroup: 3,
-            spaceBetween: 20
+            spaceBetween: 20,
+            slidesOffsetBefore: 50
           },
           768: {
             slidesPerGroup: 6,
-            spaceBetween: 30
+            spaceBetween: 30,
+            slidesOffsetBefore: 50
           },
           1024: {
             slidesPerGroup: 10,
-            spaceBetween: 40
+            spaceBetween: 40,
+            slidesOffsetBefore: 30
+          }
+        },
+        loop: false,
+        on: {
+          slideChange: function () {
+            console.log('------------------------')
+            console.log(this)
+            console.log(this.realIndex + '임')
+            switch (this.realIndex) {
+              case 48:
+                this.navigation.nextEl.style.display = 'none'
+                this.navigation.prevEl.style.display = 'flex'
+                break
+              case 0:
+                this.navigation.nextEl.style.display = 'flex'
+                this.navigation.prevEl.style.display = 'none'
+                break
+              default:
+                this.navigation.nextEl.style.display = 'flex'
+                this.navigation.prevEl.style.display = 'flex'
+                break
+            }
           }
         }
-      },
-      // isFixed: false
-      isFixed: { }
+      }
     }
   },
   // beforeCreate () {
@@ -185,6 +231,17 @@ export default {
   mounted () {
     console.log('-----mounted')
     window.addEventListener('scroll', this.scroll)
+    window.onload = () => {
+      document.querySelector(`.swiper-wrapper > div:nth-child(1) > label > div > span > div:nth-child(2) > div`).classList.add('act')
+      document.querySelector(`.swiper-wrapper > div:nth-child(1) > label > div > span > div:nth-child(1) > img`).classList.add('i-act')
+      document.querySelector(`.swiper-wrapper > div:nth-child(1) > label > div > span > div:nth-child(2) > span`).classList.add('s-act')
+      document.querySelectorAll(`.itemActive01`).forEach((v, i, a) => {
+        v.style.display = 'flex'
+      })
+      document.querySelectorAll(`.itemActive02`).forEach((v, i, a) => {
+        v.style.display = 'none'
+      })
+    }
   },
   // beforeUpdate () {
   //   console.log('-----beforeUpdate')
@@ -201,6 +258,47 @@ export default {
   //   console.log('-----destroy')
   // },
   methods: {
+    activeEvent (test01) {
+      console.log('-----------  ' + test01)
+      // let labelEvent02 = document.querySelector(`.swiper-wrapper > div:nth-child(2) > label > div > span > div :nth-child(2)`)
+      let labelEvent01 = document.querySelector(`.swiper-wrapper > div:nth-child(${test01 + 1}) > label > div > span > div:nth-child(2) > div`)
+      let imgEvent01 = document.querySelector(`.swiper-wrapper > div:nth-child(${test01 + 1}) > label > div > span > div:nth-child(1) > img`)
+      let spanEvent01 = document.querySelector(`.swiper-wrapper > div:nth-child(${test01 + 1}) > label > div > span > div:nth-child(2) > span`)
+      console.log(spanEvent01)
+      console.log(imgEvent01)
+      console.log(labelEvent01)
+      console.log(this.categoryName[test01])
+      document.querySelectorAll(`.swiper-wrapper > div > label > div > span > div:nth-child(1) > img`).forEach((v, i, a) => {
+        v.classList.remove('i-act')
+      })
+      imgEvent01.classList.add('i-act')
+      document.querySelectorAll(`.swiper-wrapper > div > label > div > span > div:nth-child(2) > span`).forEach((v, i, a) => {
+        v.classList.remove('s-act')
+      })
+      spanEvent01.classList.add('s-act')
+      document.querySelectorAll(`.swiper-wrapper > div > label > div > span > div:nth-child(2) > div`).forEach((v, i, a) => {
+        v.classList.remove('act')
+      })
+      labelEvent01.classList.add('act')
+      if (test01 === 0) {
+        document.querySelectorAll(`.itemActive01`).forEach((v, i, a) => {
+          v.style.display = 'flex'
+        })
+        document.querySelectorAll(`.itemActive02`).forEach((v, i, a) => {
+          v.style.display = 'none'
+        })
+      } else if (test01 === 1) {
+        document.querySelectorAll(`.itemActive01`).forEach((v, i, a) => {
+          v.style.display = 'none'
+        })
+        document.querySelectorAll(`.itemActive02`).forEach((v, i, a) => {
+          v.style.display = 'flex'
+        })
+      }
+    },
+    modalOpen () {
+      this.modalCheck = !this.modalCheck
+    },
     icon: function iconArr () {
       let iconImg = []
       for (let i = 1; i < 62; i++) {
@@ -228,7 +326,9 @@ export default {
   },
   components: {
     swiper,
-    swiperSlide
+    swiperSlide,
+    categoryFilterModal,
+    mainPageItem
   }
 }
 </script>

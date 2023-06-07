@@ -1,6 +1,6 @@
 <template>
   <div class="itemGrid">
-    <div class="itemFlexWrap" v-for="(data, index) in dataChange()" :key="index">
+    <div class="itemFlexWrap itemActive01" v-for="(data, index) in dataChange()" :key="`o-${index}`">
       <div class="itemIntro">
         <div class="intro01">
           <p>{{ data.address }}</p>
@@ -75,19 +75,97 @@
         </div>
       </div>
     </div>
+    <div class="itemFlexWrap itemActive02" v-for="(data, index) in dataChangeTow()" :key="index">
+      <div class="itemIntro">
+        <div class="intro01">
+          <p>{{ data.address }}</p>
+          <div class="introStar">
+            <span class="su0q88m dir dir-ltr">
+              <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style="height: 12px; width: 12px; fill: currentcolor;">
+                <path d="M15.094 1.579l-4.124 8.885-9.86 1.27a1 1 0 0 0-.542 1.736l7.293 6.565-1.965 9.852a1 1 0 0 0 1.483 1.061L16 25.951l8.625 4.997a1 1 0 0 0 1.482-1.06l-1.965-9.853 7.293-6.565a1 1 0 0 0-.541-1.735l-9.86-1.271-4.127-8.885a1 1 0 0 0-1.814 0z" fill-rule="evenodd">
+                </path>
+              </svg>
+            </span>
+            <span class="introStarNum">{{ data.star }}</span>
+          </div>
+        </div>
+        <div>
+          <p class="introText">{{ data.name }}</p>
+        </div>
+        <div>
+          <p class="introText">{{ data.schedule }}</p>
+        </div>
+        <div>
+          <p class="introText textBold">&#8361; {{ data.price }} /박</p>
+        </div>
+        <div>
+          <p></p>
+        </div>
+      </div>
+      <div class="itemImg">
+        <swiper ref="filterSwiper" :options="callSwiperOption(index)" role="tablist">
+          <swiper-slide role="tab" v-for="(item, index) in data.introImage" :key="index">
+            <img class="imgThumbnail" :src="item" />
+          </swiper-slide>
+        </swiper>
+        <div class="itemBtnWrap">
+          <div class="btnWrap1">
+            <div class="heartBtnWrap">
+              <button aria-label="위시리스트에 추가: Lindfield, 영국" data-testid="listing-card-save-button" type="button" class="heartBtn"><svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style="display: block; fill: rgba(0, 0, 0, 0.5); height: 24px; width: 24px; stroke:#fff; stroke-width: 2; overflow: visible;">
+                <path d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z">
+                </path>
+              </svg>
+            </button>
+          </div>
+          </div>
+          <div class="btnWrap2">
+            <span :class="`item-img-prev${index}`" id="itemPrev" ref="prev" style="display: none">
+              <div class="btnWrap itemWrap">
+                <div class="imgBtnFlex">
+                  <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style="display: block; fill: none; height: 12px; width: 12px; stroke: currentcolor; stroke-width: 5.33333; overflow: visible;">
+                    <g fill="none">
+                      <path d="m20 28-11.29289322-11.2928932c-.39052429-.3905243-.39052429-1.0236893 0-1.4142136l11.29289322-11.2928932">
+                      </path>
+                    </g>
+                  </svg>
+                </div>
+              </div>
+            </span>
+            <span :class="`item-img-next${index}`" id="itemNext" ref="next">
+              <div class="btnWrap itemWrap">
+                <div class="imgBtnFlex">
+                  <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style="display: block; fill: none; height: 12px; width: 12px; stroke: currentcolor; stroke-width: 5.33333; overflow: visible;">
+                    <g fill="none">
+                      <path d="m12 4 11.2928932 11.2928932c.3905243.3905243.3905243 1.0236893 0 1.4142136l-11.2928932 11.2928932">
+                      </path>
+                    </g>
+                  </svg>
+                </div>
+              </div>
+            </span>
+          </div>
+          <div class="btnWrap3">
+            <div :class="`swiper-pagination${index}`" id="itemPagination"></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 <script>
 import jsonData from '@/assets/mainItems.json'
+import jsonData02 from '@/assets/itemsHanok.json'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
 import 'swiper/css/swiper.min.css'
 
 const itemList = jsonData
+const itemList02 = jsonData02
 export default {
   name: 'mainPageItem',
   data () {
     return {
-      itemList
+      itemList,
+      itemList02
     }
   },
   methods: {
@@ -159,46 +237,65 @@ export default {
       }
       return this.itemList
     },
-    doStuff (ttt) {
-      console.log('아이템리스트' + this.itemList)
-      console.log('실행댐')
-      console.log(ttt)
-      let outNext = 0
-      for (let i = 0; i < this.itemList.length; i++) {
-        outNext = i
-        console.log(outNext)
-        for (let j = 0; j < this.itemList[i].introImage.length; j++) {
-          // console.log('j : ' + j)
-          if (j === 0) {
-            // console.log(this.$refs.next[i])
-            // console.log(this.itemList[i].introImage.length - 1)
-            console.log('디스는' + this.itemList[i].introImage[this.itemList[i].introImage.length - 1])
-            this.callEvent()
-          }
+    dataChangeTow () {
+      for (let i = 0; i < this.itemList02.length; i++) {
+        // console.log(this.$refs.tete)
+        // console.log('i :' + i)
+        // console.log(this.itemList)
+        // console.log(this.itemList[i])
+        // console.log(this.itemList[i].introImage)
+        // if (this.itemList[i].introImage[0]) {
+        // }
+        for (let j = 0; j < this.itemList02[i].introImage.length; j++) {
+          // console.log('j :' + j)
+          // console.log('img --------' + this.itemList[i].introImage[j])
+          // console.log('this.itemList' + this.itemList[i].introImage[j])
+          this.itemList02[i].introImage[j] = require('@/' + this.itemList02[i].introImage[j] + '.jpg')
         }
+        // console.log(this.itemList[i].introImage[0], this.itemList[i].introImage.length -1)
       }
-    },
-    callEvent () {
-      console.log('실행댐 callEvenrt')
+      return this.itemList02
     }
+    // doStuff (ttt) {
+    //   console.log('아이템리스트' + this.itemList)
+    //   console.log('실행댐')
+    //   console.log(ttt)
+    //   let outNext = 0
+    //   for (let i = 0; i < this.itemList.length; i++) {
+    //     outNext = i
+    //     console.log(outNext)
+    //     for (let j = 0; j < this.itemList[i].introImage.length; j++) {
+    //       // console.log('j : ' + j)
+    //       if (j === 0) {
+    //         // console.log(this.$refs.next[i])
+    //         // console.log(this.itemList[i].introImage.length - 1)
+    //         console.log('디스는' + this.itemList[i].introImage[this.itemList[i].introImage.length - 1])
+    //         this.callEvent()
+    //       }
+    //     }
+    //   }
+    // },
+    // callEvent () {
+    //   console.log('실행댐 callEvenrt')
+    // }
   },
-  mounted () {
-    let nextBtn = this.$refs.next
-    // let outNext = 0
-    for (let i = 0; i < nextBtn.length; i++) {
-      // outNext = i
-      // nextBtn[outNext].addEventListener('click', function (i) {
-      //   console.log(i)
-      // })
-    }
-    // nextBtn.forEach((val, idx, arr) => {
-    //   val.addEventListener('click', function () {
-    //     console.log('---------------')
-    //     console.log(val)
-    //     console.log(idx)
-    //   })
-    // })
-  },
+  // mounted () {
+  //   let nextBtn = this.$refs.next
+  //   // let outNext = 0
+  //   for (let i = 0; i < nextBtn.length; i++) {
+  //     // outNext = i
+  //     // nextBtn[outNext].addEventListener('click', function (i) {
+  //     //   console.log(i)
+  //     // })
+  //   }
+  //   // nextBtn.forEach((val, idx, arr) => {
+  //   //   val.addEventListener('click', function () {
+  //   //     console.log('---------------')
+  //   //     console.log(val)
+  //   //     console.log(idx)
+  //   //   })
+  //   // })
+  // },
   components: {
     swiper,
     swiperSlide

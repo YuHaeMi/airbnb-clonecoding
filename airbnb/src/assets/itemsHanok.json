@@ -1,0 +1,158 @@
+[
+  {
+  "address": "Ganghyeon-myeon, Yangyang, 한국",
+  "name": "155km 거리",
+  "schedule": "6월 26일 ~ 7월 1일",
+  "price": "171,177",
+  "star": "4.88",
+  "introImage": [
+    "images/mainItemImage/han1-1",
+    "images/mainItemImage/han1-1-2",
+    "images/mainItemImage/han1-1-3",
+    "images/mainItemImage/han1-1-4"
+    ]
+  },
+  {
+  "address": "Andong, 한국",
+  "name": "175km 거리",
+  "schedule": "6월 8일~13일",
+  "price": "228,235",
+  "star": "4.94",
+  "introImage": [
+    "images/mainItemImage/han1-2",
+    "images/mainItemImage/han1-2-2",
+    "images/mainItemImage/han1-2-3",
+    "images/mainItemImage/han1-2-4"
+    ]
+  },
+  {
+  "address": "양평군, 한국",
+  "name": "47km 거리",
+  "schedule": "6월 11일~16일",
+  "price": "684,706",
+  "star": "4.85",
+  "introImage": [
+    "images/mainItemImage/han1-3",
+    "images/mainItemImage/han1-3-2",
+    "images/mainItemImage/han1-3-3",
+    "images/mainItemImage/han1-3-4"
+    ]
+  },
+  {
+  "address": "Bonghwa-eup, Bonghwa-gun, 한국",
+  "name": "169km 거리",
+  "schedule": "6월 11일~17일",
+  "price": "203,333",
+  "star": "4.93",
+  "introImage": [
+    "images/mainItemImage/han1-4",
+    "images/mainItemImage/han1-4-2",
+    "images/mainItemImage/han1-4-3",
+    "images/mainItemImage/han1-4-4"
+    ]
+  },
+  {
+  "address": "Pungcheon-myeon, Andong, 한국",
+  "name": "177km 거리",
+  "schedule": "7월 2일~8일",
+  "price": "176,883",
+  "star": "4.88",
+  "introImage": [
+    "images/mainItemImage/han1-5",
+    "images/mainItemImage/han1-5-2",
+    "images/mainItemImage/han1-5-3",
+    "images/mainItemImage/han1-5-4"
+    ]
+  },
+  {
+  "address": "전주시 완산구, 한국",
+  "name": "194km 거리",
+  "schedule": "7월 17일~22일",
+  "price": "312,682",
+  "star": "4.9",
+  "introImage": [
+    "images/mainItemImage/han1-6",
+    "images/mainItemImage/han1-6-2",
+    "images/mainItemImage/han1-6-3",
+    "images/mainItemImage/han1-6-4"
+    ]
+  },
+  {
+  "address": "성북구, 한국",
+  "name": "2km 거리",
+  "schedule": "7월 17일~22일",
+  "price": "224,379",
+  "star": "4.99",
+  "introImage": [
+    "images/mainItemImage/han1-7",
+    "images/mainItemImage/han1-7-2",
+    "images/mainItemImage/han1-7-3",
+    "images/mainItemImage/han1-7-4"
+    ]
+  },
+  {
+  "address": "Ungjin-dong, Gongju, 한국",
+  "name": "123km 거리",
+  "schedule": "7월 3일~8일",
+  "price": "191,718",
+  "star": "4.95",
+  "introImage": [
+    "images/mainItemImage/han1-8",
+    "images/mainItemImage/han1-8-2",
+    "images/mainItemImage/han1-8-3",
+    "images/mainItemImage/han1-8-4"
+    ]
+  },
+  {
+  "address": "Chodang-dong, Gangneung, 한국",
+  "name": "170km 거리",
+  "schedule": "6월 8일~15일",
+  "price": "317,899",
+  "star": "4.96",
+  "introImage": [
+    "images/mainItemImage/han1-9",
+    "images/mainItemImage/han1-9-2",
+    "images/mainItemImage/han1-9-3",
+    "images/mainItemImage/han1-9-4"
+    ]
+  },
+  {
+  "address": "Seosin-myeon, Hwaseong-si, 한국",
+  "name": "55km 거리",
+  "schedule": "6월 25일~30일",
+  "price": "92,892",
+  "star": "4.85",
+  "introImage": [
+    "images/mainItemImage/han1-10",
+    "images/mainItemImage/han1-10-2",
+    "images/mainItemImage/han1-10-3",
+    "images/mainItemImage/han1-10-4"
+    ]
+  },
+  {
+  "address": "Pungsan-eup, Andong, 한국",
+  "name": "176km 거리",
+  "schedule": "6월 18일~23일",
+  "price": "278,447",
+  "star": "5.0",
+  "introImage": [
+    "images/mainItemImage/han1-11",
+    "images/mainItemImage/han1-11-2",
+    "images/mainItemImage/han1-11-3",
+    "images/mainItemImage/han1-11-4"
+    ]
+  },
+  {
+  "address": "종로구, 한국",
+  "name": "1km 거리",
+  "schedule": "6월 20일~25일",
+  "price": "475,554",
+  "star": "4.92",
+  "introImage": [
+    "images/mainItemImage/han1-12",
+    "images/mainItemImage/han1-12-2",
+    "images/mainItemImage/han1-12-3",
+    "images/mainItemImage/han1-12-4"
+    ]
+  }
+] 

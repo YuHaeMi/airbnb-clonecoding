@@ -33,6 +33,7 @@ export default {
 @import "./assets/category.css";
 @import "./assets/mainFooter.css";
 @import "./assets/itemList.css";
+@import "./assets/categoryFilterModal.css";
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
